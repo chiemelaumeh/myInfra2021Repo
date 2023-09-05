@@ -29,7 +29,7 @@ resource "aws_security_group" "jenkins-sg-2023" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
- # outbound from jenkis server
+ # outbound from jenkins server
   egress {
     from_port   = 0
     to_port     = 65535
@@ -53,10 +53,10 @@ resource "aws_instance" "myFirstInstance" {
 }
 
 # Create Elastic IP address
-resource "aws_eip" "myFirstInstance" {
-  vpc      = true
+resource "aws_eip" "myElasticIP" {
+  domain      = "vpc"
   instance = aws_instance.myFirstInstance.id
 tags= {
-    Name = "my_elastic_ip"
+    Name = "jenkins_elastic_ip"
   }
 }
